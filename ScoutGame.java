@@ -232,22 +232,18 @@ public class ScoutGame extends JFrame {
                 redScout.updatePosition();
             }
 
-            // Обновяване на сините войници
             if (blueSoldiers != null) {
                 for (Soldier soldier : blueSoldiers) {
                     if (soldier != null) {
-                        // Логика за движение или стрелба
-                        updateSoldier(soldier, redWorkers); // Примерна функция за актуализация
+                        updateSoldier(soldier, redWorkers);
                     }
                 }
             }
 
-            // Обновяване на червените войници
             if (redSoldiers != null) {
                 for (Soldier soldier : redSoldiers) {
                     if (soldier != null) {
-                        // Логика за движение или стрелба
-                        updateSoldier(soldier, blueWorkers); // Примерна функция за актуализация
+                        updateSoldier(soldier, blueWorkers);
                     }
                 }
             }
