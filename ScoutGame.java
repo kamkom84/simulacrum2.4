@@ -269,7 +269,7 @@ public class ScoutGame extends JFrame {
                 soldier.shoot(enemy); // Ако врагът е в обсега, стреля
             }
         }
-        // soldier.move(); // Ако има движение, добавете подходящ метод
+        // soldier.move();
     }
 
 
