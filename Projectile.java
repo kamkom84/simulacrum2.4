@@ -5,11 +5,11 @@ import java.awt.*;
 public class Projectile {
     private int x, y;
     private int targetX, targetY;
-    private int speed = 30;
+    private int speed = 35;
     private boolean active;
     private final int maxDistance = 500;
     private int traveledDistance = 0;
-    private Color color = Color.GREEN;
+    private Color color = Color.RED;
 
     public Projectile(int startX, int startY, int targetX, int targetY) {
         this.x = startX;
