@@ -24,4 +24,5 @@ public class ExplosionEffect {
     public boolean isExpired(long currentTime) {
         return currentTime > endTime;
     }
+
 }

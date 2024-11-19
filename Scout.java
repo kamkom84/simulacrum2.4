@@ -45,7 +45,7 @@ public class Scout extends Character {
     public void update(Point baseCenter, Resource[] resources) {
         if (!isActive) return;
 
-        long currentTime = System.currentTimeMillis(); // Текущо време
+        long currentTime = System.currentTimeMillis();
         managePointsReduction(currentTime);
 
         if (isExploding && currentTime - explosionStartTime > EXPLOSION_DURATION) {
@@ -261,7 +261,7 @@ public class Scout extends Character {
         }
     }
 
-    public void drawKills(Graphics2D g2d, int xPosition, int yPosition) {
+    public void drawKills(Graphics2D g2d, int xPosition, int yPosition) {  //TO DO
         g2d.setFont(new Font("Arial", Font.BOLD, 12));
         g2d.setColor(team.equals("blue") ? Color.RED : Color.BLUE);
 

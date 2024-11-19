@@ -13,10 +13,8 @@ public abstract class Character {
     protected int health;
     private int bodyRadius = 10;
     private boolean active = true;
-    private boolean showHealth = false; // Флаг за показване на здравето
+    private boolean showHealth = false;
     private String type;
-
-
 
     public Character(double startX, double startY, String team, String role) {
         this.x = startX;
@@ -99,6 +97,5 @@ public abstract class Character {
     }
 
     public abstract String getType();
-
 
 }

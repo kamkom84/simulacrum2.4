@@ -264,7 +264,7 @@ public class ScoutGame extends JFrame {
                 soldier.shoot(enemy);
             }
         }
-        // soldier.move();
+        // soldier.move();  //TO DO
     }
 
     private void checkForAvailableResources() {
@@ -549,7 +549,7 @@ public class ScoutGame extends JFrame {
             }
         });
 
-        timer.setInitialDelay(initialDelay); // Забавяне за първия работник
+        timer.setInitialDelay(initialDelay);
         timer.start();
     }
 

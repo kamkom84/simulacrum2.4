@@ -115,7 +115,7 @@ public class Worker extends Character {
 
         if (closestResourceIndex != -1) {
             targetResourceIndex = closestResourceIndex;
-            resourceOccupied[targetResourceIndex] = true; // Запазваме ресурса
+            resourceOccupied[targetResourceIndex] = true;
             System.out.println("Worker " + id + " chose resource " + closestResourceIndex + " with " + nearest.getValue() + " points.");
         }
 

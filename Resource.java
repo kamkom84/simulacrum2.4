@@ -27,10 +27,11 @@ public class Resource {
     }
 
     public void reducePoints(int amount) {
-        value = Math.max(0, value - amount); // Уверяваме се, че стойността не пада под 0
+        value = Math.max(0, value - amount);
     }
 
     public int getRadius() {
         return radius;
     }
+
 }
