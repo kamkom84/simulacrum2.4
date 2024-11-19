@@ -166,7 +166,7 @@ public class ScoutGame extends JFrame {
 
 
                 if (bulletStartX != -1 && bulletStartY != -1) {
-                    g2d.setColor(Color.GREEN);
+                    g2d.setColor(Color.RED);
                     g2d.drawLine(bulletStartX, bulletStartY, bulletEndX, bulletEndY);
                 }
 
