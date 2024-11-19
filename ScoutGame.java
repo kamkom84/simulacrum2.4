@@ -180,7 +180,6 @@ public class ScoutGame extends JFrame {
                 }
             }
 
-
             private void drawExplosions(Graphics2D g2d) {
                 long currentTime = System.currentTimeMillis();
                 explosionEffects.removeIf(effect -> effect.isExpired(currentTime));
@@ -262,12 +261,11 @@ public class ScoutGame extends JFrame {
     private void updateSoldier(Soldier soldier, Worker[] enemyWorkers) {
         for (Worker enemy : enemyWorkers) {
             if (enemy != null && enemy.isActive() && distance(soldier.getX(), soldier.getY(), enemy.getX(), enemy.getY()) <= 150) {
-                soldier.shoot(enemy); // Ако врагът е в обсега, стреля
+                soldier.shoot(enemy);
             }
         }
         // soldier.move();
     }
-
 
     private void checkForAvailableResources() {
         for (Worker worker : allWorkers) {
@@ -408,14 +406,14 @@ public class ScoutGame extends JFrame {
             if (defender != null) {
                 defender.patrolAroundBase(blueBaseX + baseWidth / 2, blueBaseY + baseHeight / 2, DEFENDER_SHIELD_RADIUS);
                 defender.checkAndShootIfScoutInRange(redScout);
-                defender.updateProjectiles(redScout); // Обновяване на патроните
+                defender.updateProjectiles(redScout);
             }
         }
         for (Defender defender : redDefenders) {
             if (defender != null) {
                 defender.patrolAroundBase(redBaseX + baseWidth / 2, redBaseY + baseHeight / 2, DEFENDER_SHIELD_RADIUS);
                 defender.checkAndShootIfScoutInRange(blueScout);
-                defender.updateProjectiles(blueScout); // Обновяване на патроните
+                defender.updateProjectiles(blueScout);
             }
         }
     }
@@ -473,27 +471,23 @@ public class ScoutGame extends JFrame {
 
         if (ant instanceof Scout) {
             lineLength = bodyRadius * 2;
-            g2d.setColor(ant.team.equals("blue") ? Color.BLUE : Color.RED); // Скаутите са сини или червени
+            g2d.setColor(ant.team.equals("blue") ? Color.BLUE : Color.RED);
         } else if (ant instanceof Worker) {
             lineLength = bodyRadius;
 
-            // Задаваме цвета на работника според отбора
             if (ant.team.equals("blue")) {
-                g2d.setColor(Color.BLUE); // Син за работниците на "blue" отбора
+                g2d.setColor(Color.BLUE);
             } else {
-                g2d.setColor(Color.RED); // Червен за работниците на "red" отбора
+                g2d.setColor(Color.RED);
             }
 
-            // Рисуваме тялото на работника със зададения цвят
             g2d.fillOval((int) (ant.getX() - bodyRadius), (int) (ant.getY() - bodyRadius), bodyRadius * 2, bodyRadius * 2);
 
-            // Възстановяваме белия цвят само за номера, след което пак задаваме цвета за тялото
             Worker worker = (Worker) ant;
             g2d.setFont(new Font("Arial", Font.BOLD, 8));
             g2d.setColor(Color.WHITE); // Бял цвят за номера
             g2d.drawString(String.valueOf(worker.getId()), (int) worker.getX() - 5, (int) worker.getY() - 10);
 
-            // Възстановяваме оригиналния цвят за тялото на работника
             if (ant.team.equals("blue")) {
                 g2d.setColor(Color.BLUE);
             } else {
@@ -502,15 +496,13 @@ public class ScoutGame extends JFrame {
         } else if (ant instanceof Defender) {
             bodyRadius *= 1.5;
             lineLength = bodyRadius;
-            g2d.setColor(ant.team.equals("blue") ? new Color(0, 0, 180) : new Color(180, 0, 0)); // По-тъмен син за "blue" защитници, по-тъмен червен за "red"
+            g2d.setColor(ant.team.equals("blue") ? new Color(0, 0, 180) : new Color(180, 0, 0));
         } else {
             return;
         }
 
-        // Рисуване на тялото на персонажа (работник, защитник или скаут)
         g2d.fillOval((int) (ant.getX() - bodyRadius), (int) (ant.getY() - bodyRadius), bodyRadius * 2, bodyRadius * 2);
 
-        // Определяне на ъгъл и рисуване на посоката (жълта чертичка за работници)
         double angle = ant.getCurrentAngle();
         if (ant instanceof Defender && ant.team.equals("red") && angle == 0) {
             angle = 180;
@@ -521,14 +513,13 @@ public class ScoutGame extends JFrame {
         int x2 = x1 + (int) (lineLength * Math.cos(Math.toRadians(angle)));
         int y2 = y1 + (int) (lineLength * Math.sin(Math.toRadians(angle)));
 
-        // Избиране на цвят за чертичката
         if (ant instanceof Scout) {
-            g2d.setColor(Color.GREEN); // Зелен за скаута
+            g2d.setColor(Color.GREEN);
         } else if (ant instanceof Worker || ant instanceof Defender) {
-            g2d.setColor(Color.YELLOW); // Жълт за работници и защитници
+            g2d.setColor(Color.YELLOW);
         }
 
-        g2d.drawLine(x1, y1, x2, y2); // Рисуване на чертичката
+        g2d.drawLine(x1, y1, x2, y2);
     }
 
     private void scheduleWorkerStarts() {
@@ -650,18 +641,17 @@ public class ScoutGame extends JFrame {
         return newArray;
     }
 
-    private void moveScoutsToStartPosition() {
+    private void moveScoutsToStartPosition() {  //TO DO
         System.out.println("Moving scouts to start positions...");
 
         blueScout.setX(blueBaseX + baseWidth / 2);
-        blueScout.setY(blueBaseY - 100); // 100 пиксела над базата
-        blueScout.setCurrentAngle(0); // С лице към центъра
+        blueScout.setY(blueBaseY - 100);
+        blueScout.setCurrentAngle(0);
         System.out.println("Blue Scout moved to: " + blueScout.getX() + ", " + blueScout.getY());
 
-        // Промяна на позицията на червения скаут
         redScout.setX(redBaseX + baseWidth / 2);
-        redScout.setY(redBaseY - 100); // 100 пиксела над базата
-        redScout.setCurrentAngle(180); // С лице към центъра
+        redScout.setY(redBaseY - 100);
+        redScout.setCurrentAngle(180);
         System.out.println("Red Scout moved to: " + redScout.getX() + ", " + redScout.getY());
     }
 
@@ -841,7 +831,7 @@ public class ScoutGame extends JFrame {
         }
 
         for (Worker worker : enemyWorkers) {
-            if (worker == null || !worker.isActive()) { // Проверка за null и активност
+            if (worker == null || !worker.isActive()) {
                 continue;
             }
             if (scout.distanceTo(worker) <= range) {
